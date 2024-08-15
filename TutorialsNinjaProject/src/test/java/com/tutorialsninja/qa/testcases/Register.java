@@ -34,8 +34,8 @@ public class Register extends Base {
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
 		driver.findElement(By.id("input-email")).sendKeys(Utilities.generateEmailWithTimeStamp());
 		driver.findElement(By.id("input-telephone")).sendKeys("123456789");
-		driver.findElement(By.id("input-password")).sendKeys("12345");
-		driver.findElement(By.id("input-confirm")).sendKeys("12345");
+		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
+		driver.findElement(By.id("input-confirm")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.name("agree")).click();
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 		
