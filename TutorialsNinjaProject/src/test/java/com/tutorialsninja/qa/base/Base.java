@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.tutorialsninja.qa.utils.Utilities;
+
 public class Base {
 
 	WebDriver driver;
@@ -41,8 +43,8 @@ public class Base {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT_TIME));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Utilities.PAGE_WAIT_TIME));
 		driver.get(prop.getProperty("url"));
 		
 		return driver;
