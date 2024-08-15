@@ -34,11 +34,11 @@ public class Base {
 	}
 
 	public WebDriver initializeBrowserAndOpenApplicationURL(String browserName) {
-		if (browserName.equals("chrome")) {
+		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
-		} else if (browserName.equals("firefox")) {
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-		} else if (browserName.equals("edge")) {
+		} else if (browserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
 		}
 
