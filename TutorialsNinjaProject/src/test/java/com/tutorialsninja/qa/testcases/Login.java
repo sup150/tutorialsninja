@@ -15,10 +15,15 @@ public class Login extends Base{
 	
 	WebDriver driver;
 	
+	public Login()
+	{
+		super();
+	}
+	
 	@BeforeMethod
 	public void setup()
 	{
-		driver = initializeBrowserAndOpenApplicationURL("chrome");
+		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browserName"));
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Login")).click();
 	}
@@ -32,8 +37,8 @@ public class Login extends Base{
 	@Test(priority = 1)
 	public void verifyLoginWithValidCredentials()
 	{
-		driver.findElement(By.id("input-email")).sendKeys("amotooricap9@gmail.com");
-		driver.findElement(By.id("input-password")).sendKeys("12345");
+		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("validEmail"));
+		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed(), "Edit your account information is not displayed..");
 	}
@@ -53,7 +58,7 @@ public class Login extends Base{
 	public void verifyLoginWithInvalidEmailAndValidPassword()
 	{
 		driver.findElement(By.id("input-email")).sendKeys(Utilities.generateEmailWithTimeStamp());
-		driver.findElement(By.id("input-password")).sendKeys("12345");
+		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("validPassword"));
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		String actualWarningMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-dismissible')]")).getText();
 		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password.";
@@ -64,7 +69,7 @@ public class Login extends Base{
 	@Test(priority = 4)
 	public void verifyLoginWithValidEmailAndInvalidPassword()
 	{
-		driver.findElement(By.id("input-email")).sendKeys("amotooricap9@gmail.com");
+		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("validEmail"));
 		driver.findElement(By.id("input-password")).sendKeys("xyzabc123");
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		String actualWarningMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-dismissible')]")).getText();
