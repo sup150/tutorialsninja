@@ -13,6 +13,11 @@ import com.tutorialsninja.qa.utils.Utilities;
 public class Register extends Base {
 
 	WebDriver driver;
+	
+	public Register()
+	{
+		super();
+	}
 	@BeforeMethod
 	public void setup()
 	{

@@ -12,16 +12,31 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.tutorialsninja.qa.utils.Utilities;
+
 public class Base {
 
 	WebDriver driver;
 	public Properties prop;
+	public Properties dataprop;
 	
 	public Base() 
 	{
 		prop = new Properties();
-		File propFile = new File(prop.getProperty("user.dir") + "\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\config.properties");
+		File propFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\config.properties");
 	
+		dataprop = new Properties();
+		File dataPropFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\tutorialsninja\\qa\\testdata\\testdata.properties");
+		
+		try {
+			FileInputStream datafis = new FileInputStream(dataPropFile);
+			dataprop.load(datafis);
+			
+		}catch(Throwable e)
+		{
+			e.printStackTrace();
+		}
+		
 		try {
 			FileInputStream fis = new FileInputStream(propFile);
 			prop.load(fis);
@@ -32,17 +47,17 @@ public class Base {
 	}
 
 	public WebDriver initializeBrowserAndOpenApplicationURL(String browserName) {
-		if (browserName.equals("chrome")) {
+		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
-		} else if (browserName.equals("firefox")) {
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-		} else if (browserName.equals("edge")) {
+		} else if (browserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT_TIME));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Utilities.PAGE_WAIT_TIME));
 		driver.get(prop.getProperty("url"));
 		
 		return driver;
