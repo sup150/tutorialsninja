@@ -13,10 +13,15 @@ public class Search extends Base{
 	
 	WebDriver driver;
 	
+	public Search()
+	{
+		super();
+	}
+	
 	@BeforeMethod
 	public void setup()
 	{
-		driver = initializeBrowserAndOpenApplicationURL("edge");
+		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browserName"));
 	}
 
 	@AfterMethod

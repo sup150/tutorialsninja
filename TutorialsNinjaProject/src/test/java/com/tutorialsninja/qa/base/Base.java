@@ -20,7 +20,7 @@ public class Base {
 	public Base() 
 	{
 		prop = new Properties();
-		File propFile = new File(prop.getProperty("user.dir") + "\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\config.properties");
+		File propFile = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\config.properties");
 	
 		try {
 			FileInputStream fis = new FileInputStream(propFile);
