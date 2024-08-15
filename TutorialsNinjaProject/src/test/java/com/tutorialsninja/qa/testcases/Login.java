@@ -73,7 +73,7 @@ public class Login extends Base{
 		driver.findElement(By.id("input-password")).sendKeys("xyzabc123");
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		String actualWarningMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-dismissible')]")).getText();
-		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password.";
+		String expectedWarningMessage = dataprop.getProperty("emailPasswordNoMatchWarning");
 		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage), "Expected warning message not displayed..");
 		
 	}
@@ -85,7 +85,7 @@ public class Login extends Base{
 		driver.findElement(By.id("input-password")).sendKeys("");
 		driver.findElement(By.xpath("//input[@value='Login']")).click();
 		String actualWarningMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-dismissible')]")).getText();
-		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password.";
+		String expectedWarningMessage = dataprop.getProperty("emailPasswordNoMatchWarning");
 		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage), "Expected warning message not displayed..");
 		
 	}
