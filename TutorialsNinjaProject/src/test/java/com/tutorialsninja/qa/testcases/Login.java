@@ -90,4 +90,8 @@ public class Login extends Base{
 		
 	}
 	
+	public void testdata()
+	{
+		System.out.println("test");
+	}
 }
