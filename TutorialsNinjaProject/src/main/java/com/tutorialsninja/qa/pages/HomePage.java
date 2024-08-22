@@ -21,6 +21,9 @@ public class HomePage {
 	@FindBy(id = "search")
 	private WebElement  searchBoxField;
 	
+	@FindBy(xpath = " //span[@class='input-group-btn']/button")
+	private WebElement searchButton;
+	
 	public HomePage(WebDriver driver)
 	{
 		this.driver = driver;
