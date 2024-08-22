@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.tutorialsninja.qa.base.Base;
+import com.tutorialsninja.qa.pages.HomePage;
 
 public class Search extends Base{
 	
@@ -33,7 +34,9 @@ public class Search extends Base{
 	@Test(priority = 1)
 	public void verifySearchWithValidProduct()
 	{
-		driver.findElement(By.name("search")).sendKeys(dataprop.getProperty("validProduct"));
+		HomePage homePage = new HomePage(driver);
+		homePage.enterProductIntoSearchboxField(dataprop.getProperty("validProduct"));
+		//driver.findElement(By.name("search")).sendKeys(dataprop.getProperty("validProduct"));
 		// xpath for search button//button[contains(@class, 'btn-default btn-lg')] 
 		//   //span[@class='input-group-btn']/button
 		//driver.findElement(By.xpath("//div[@id='search']/descendent::button")).click();

@@ -18,6 +18,9 @@ public class HomePage {
 	@FindBy(linkText = "Register")
 	private WebElement registerOption;
 	
+	@FindBy(id = "search")
+	private WebElement  searchBoxField;
+	
 	public HomePage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -39,5 +42,10 @@ public class HomePage {
 	public void selectRegisterOption()
 	{
 		registerOption.click();
+	}
+	
+	public void enterProductIntoSearchboxField(String productText)
+	{
+		searchBoxField.sendKeys(productText);
 	}
 }
