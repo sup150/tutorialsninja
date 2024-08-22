@@ -64,4 +64,9 @@ public class Search extends Base{
 		String actualsearchmessage = driver.findElement(By.xpath("//div[@id='content']/h2/following-sibling::p")).getText();
 		Assert.assertEquals(actualsearchmessage, dataprop.getProperty("NoProductTextInSearchResult"), "No product message in search result is displayed");
 	}
+	
+	public void test()
+	{
+		System.out.println("test");
+	}
 }
