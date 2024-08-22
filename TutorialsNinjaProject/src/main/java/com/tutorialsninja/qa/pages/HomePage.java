@@ -51,4 +51,9 @@ public class HomePage {
 	{
 		searchBoxField.sendKeys(productText);
 	}
+	
+	public void clickOnSearchButton()
+	{
+		searchButton.click();
+	}
 }

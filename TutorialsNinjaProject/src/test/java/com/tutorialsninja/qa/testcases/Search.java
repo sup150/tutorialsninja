@@ -41,7 +41,9 @@ public class Search extends Base{
 		//   //span[@class='input-group-btn']/button
 		//driver.findElement(By.xpath("//div[@id='search']/descendent::button")).click();
 		//driver.findElement(By.xpath("//button[contains(@class, 'btn-default btn-lg')] ")).click(); - working
-		driver.findElement(By.xpath(" //span[@class='input-group-btn']/button")).click(); //working
+		
+		homePage.clickOnSearchButton();
+		//driver.findElement(By.xpath(" //span[@class='input-group-btn']/button")).click(); //working
 		
 		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
 	}
