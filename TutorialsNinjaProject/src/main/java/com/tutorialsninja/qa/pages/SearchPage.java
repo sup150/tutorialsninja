@@ -26,4 +26,10 @@ public class SearchPage {
 		boolean displaystatus = validHPProduct.isDisplayed();
 		return displaystatus;
 	}
+	
+	public String retrieveNoProductMessageText()
+	{
+		String noProductMessageText = noProductMessage.getText();
+		return noProductMessageText;
+	}
 }
