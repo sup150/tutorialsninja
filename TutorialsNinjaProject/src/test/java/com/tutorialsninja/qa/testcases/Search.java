@@ -58,9 +58,9 @@ public class Search extends Base{
 		//driver.findElement(By.name("search")).sendKeys(dataprop.getProperty("invalidProduct"));
 		homePage.clickOnSearchButton();
 		//driver.findElement(By.xpath(" //span[@class='input-group-btn']/button")).click(); //working
-		
-		
-		String actualsearchmessage = driver.findElement(By.xpath("//div[@id='content']/h2/following-sibling::p")).getText();
+		SearchPage searchPage = new SearchPage(driver);
+		String actualsearchmessage = searchPage.retrieveNoProductMessageText();
+		//String actualsearchmessage = driver.findElement(By.xpath("//div[@id='content']/h2/following-sibling::p")).getText();
 		Assert.assertEquals(actualsearchmessage, dataprop.getProperty("NoProductTextInSearchResult"), "No product message in search result is displayed");
 	}
 	
