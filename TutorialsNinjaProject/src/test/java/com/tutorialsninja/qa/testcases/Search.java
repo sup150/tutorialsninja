@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.tutorialsninja.qa.base.Base;
 import com.tutorialsninja.qa.pages.HomePage;
+import com.tutorialsninja.qa.pages.SearchPage;
 
 public class Search extends Base{
 	
@@ -44,8 +45,9 @@ public class Search extends Base{
 		
 		homePage.clickOnSearchButton();
 		//driver.findElement(By.xpath(" //span[@class='input-group-btn']/button")).click(); //working
-		
-		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
+		SearchPage searchPage = new SearchPage(driver);
+		Assert.assertTrue(searchPage.displayStatusOfHPValidProduct(), "Valid product HP is not displayed in the search results");
+	//	Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
 	}
 	
 	@Test(priority = 2)
